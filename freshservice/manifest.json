@@ -1,0 +1,16 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshservice": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      }
+    }
+  },
+  "whitelisted-domains": [
+    "https://xkcd.com"
+  ]
+}

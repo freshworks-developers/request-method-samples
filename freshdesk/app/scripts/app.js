@@ -1,19 +1,13 @@
-asPageLoads();
+document.addEventListener('DOMContentLoaded', () => renderApp());
 
-function asPageLoads() {
-  document.readyState != 'loading'
-    ? console.log('page is rendering')
-    : document.addEventListener('DOMContentLoaded', initApp);
-}
-
-async function initApp() {
-  var client = await app.initialized();
-  let options = { client: true };
-  const displayElement = document.getElementById('apptext');
+async function renderApp() {
   try {
-    let comicPayload = await client.request.get('https://xkcd.com/info.0.json', options);
-    const { img, safe_title } = JSON.parse(comicPayload.response);
-    const imagePlaceholder = `<center>
+    client.events.on('app.activated', async function () {
+      const displayElement = document.getElementById('apptext');
+      let options = { client: true };
+      let comicPayload = await client.request.get('https://xkcd.com/info.0.json', options);
+      const { img, safe_title } = JSON.parse(comicPayload.response);
+      const imagePlaceholder = `<center>
   <a href="${img}" target="_blank">
       <img src="${img}" width="100%"></img><br/>
     </a>
@@ -21,7 +15,8 @@ async function initApp() {
     <small>(Click the image to see the cartoon)</small>
   </center>`;
 
-    displayElement.innerHTML = imagePlaceholder;
+      displayElement.innerHTML = imagePlaceholder;
+    });
 
     let { subdomain } = await client.iparams.get('subdomain');
     const URL = `https://${subdomain}.freshdesk.com/api/v2/contacts`;
@@ -33,7 +28,8 @@ async function initApp() {
     };
 
     let { response } = await client.request.get(URL, authOpts);
-    console.info(response);
+    console.info('Request succeeded');
+    console.info(JSON.parse(response));
   } catch (error) {
     console.error(`Request failed: ${error}`);
   }

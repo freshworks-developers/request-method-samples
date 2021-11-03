@@ -2,11 +2,7 @@ var client;
 
 (async function init() {
   client = await app.initialized();
-  try {
-    client.events.on('app.activated', displayImageInSidebar);
-  } catch (error) {
-    console.error(`Request failed: ${error}`);
-  }
+  client.events.on('app.activated', displayImageInSidebar);
 })();
 
 async function displayImageInSidebar() {
@@ -23,12 +19,4 @@ async function displayImageInSidebar() {
     </center>`;
 
   displayElement.innerHTML = imagePlaceholder;
-}
-
-function to(promise) {
-  return promise
-    .then((data) => {
-      return [null, data];
-    })
-    .catch((err) => [err]);
 }

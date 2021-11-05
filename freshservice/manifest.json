@@ -6,14 +6,15 @@
         "ticket_sidebar": {
           "url": "index.html",
           "icon": "styles/images/icon.svg"
+        },
+        "ticket_requester_info": {
+          "url": "views/requester_info.html",
+          "icon": "styles/images/icon.svg"
         }
       }
     }
   },
-  "whitelisted-domains": [
-    "https://xkcd.com",
-    "https://*.freshservice.com"
-  ],
+  "whitelisted-domains": ["https://xkcd.com", "https://*.freshservice.com"],
   "engines": {
     "node": "12.22.7",
     "fdk": "7.1.0"

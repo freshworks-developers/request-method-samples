@@ -10,7 +10,7 @@
       }
     }
   },
-  "whitelisted-domains": ["https://*.freshsales.io"],
+  "whitelisted-domains": ["https://*.freshsales.io", "https://*.myfreshworks.com", "https://*.freshworks.com"],
   "engines": {
     "node": "12.22.7",
     "fdk": "7.1.0"

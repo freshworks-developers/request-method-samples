@@ -13,3 +13,9 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+p {
+  font-family: 'Helvetica Neue', Helvetica, Arial;
+  font-size: 1.2em;
+  max-width: 30%;
+}

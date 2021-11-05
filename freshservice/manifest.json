@@ -11,6 +11,11 @@
     }
   },
   "whitelisted-domains": [
-    "https://xkcd.com"
-  ]
+    "https://xkcd.com",
+    "https://*.freshservice.com"
+  ],
+  "engines": {
+    "node": "12.22.7",
+    "fdk": "7.1.0"
+  }
 }

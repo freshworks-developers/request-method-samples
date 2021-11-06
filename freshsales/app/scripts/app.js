@@ -42,7 +42,7 @@ async function openModal() {
   let err, response;
   let options = {
     headers: {
-      Authorization: `Token token= <%= encode(iparam.api_key) %>`,
+      Authorization: `Token token=<%= (iparam.api_key) %>`,
       'Content-Type': 'application/json'
     }
   };
@@ -51,7 +51,7 @@ async function openModal() {
     productContext: { url }
   } = await client.data.get('domainName');
 
-  [err, response] = await to(client.request.get(`${url}/api/sales_activites`, options));
+  [err, response] = await to(client.request.get(`${url}/sales/api/settings/contacts/fields`, options));
   console.log(response);
   if (err) {
     console.error('We had unknown problems gettting sales activities');

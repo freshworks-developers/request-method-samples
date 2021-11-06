@@ -1,1 +1,9 @@
-{}
+{
+  "api_key": {
+    "display_name": "Freshsale Suite API Key",
+    "description": "API key helps the app to access Freshsales suite",
+    "secure": true,
+    "type": "text",
+    "required": true
+  }
+}

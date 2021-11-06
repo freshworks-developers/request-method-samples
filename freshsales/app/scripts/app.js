@@ -6,19 +6,22 @@ var client;
 })();
 
 async function renderApp() {
-  let openModalBtn = document.querySelector('.modal-opener');
-  openModalBtn.addEventListener('click', renderImageInSidebar);
+  let comicElement = document.querySelector('.api-get-comic');
+  let displayJsonElement = document.querySelector('.api-get-json');
+  comicElement.addEventListener('fwClick', renderImageInSidebar);
+  displayJsonElement.addEventListener('fwClick', openModal);
 }
 
 async function renderImageInSidebar() {
-  const displayElement = document.querySelector('.api-get-comic');
+  const displayComic = document.querySelector('.apptext');
+
   let err, response;
   let options = { client: true };
 
   [err, response] = await to(client.request.get('https://xkcd.com/info.0.json', options));
   if (err) {
     console.error(err);
-    displayElement.innerHTML = `
+    displayComic.innerHTML = `
     <center> There is a problem with xkcd. App is not able to fetch the image for the user. </center>
     `;
   }
@@ -32,7 +35,32 @@ async function renderImageInSidebar() {
       <small>(Click the image to see the cartoon)</small>
     </center>`;
 
-  displayElement.innerHTML = imagePlaceholder;
+  displayComic.innerHTML = imagePlaceholder;
+}
+
+async function openModal() {
+  let err, response;
+  let options = {
+    headers: {
+      Authorization: `Token token= <%= encode(iparam.api_key) %>`,
+      'Content-Type': 'application/json'
+    }
+  };
+
+  let {
+    productContext: { url }
+  } = await client.data.get('domainName');
+
+  [err, response] = await to(client.request.get(`${url}/api/sales_activites`, options));
+  console.log(response);
+  if (err) {
+    console.error('We had unknown problems gettting sales activities');
+  }
+  await client.interface.trigger('showModal', {
+    title: 'Sales Activites',
+    template: 'views/modal.html',
+    data: response
+  });
 }
 
 function closePopup() {
@@ -43,7 +71,6 @@ function closePopup() {
 function to(promise, improved) {
   return promise
     .then((data) => {
-      data = JSON.parse(data.response);
       return [null, data];
     })
     .catch((err) => {

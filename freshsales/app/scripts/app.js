@@ -42,7 +42,7 @@ async function openModal() {
   let err, response;
   let options = {
     headers: {
-      Authorization: `Token token=<%= (iparam.api_key) %>`,
+      Authorization: `Token token=<%= (iparam.api_key) %>`, // even a small space btwn token, = and <%= will break
       'Content-Type': 'application/json'
     }
   };

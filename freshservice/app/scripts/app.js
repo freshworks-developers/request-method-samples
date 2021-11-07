@@ -1,30 +1,45 @@
-isDocumentReady();
+var client;
 
-function startAppRender() {
-  app.initialized()
-    .then(function (client) {
-      let options = { client: true }
-      const displayElement = document.getElementById('apptext');
-      client.request.get("https://xkcd.com/info.0.json", options).then((data) => {
-        const payload = JSON.parse(data.response); console.log(payload)
-        displayElement.innerHTML = `<center>
-                                      <a href="${payload.img}" target="_blank">
-                                        <img src="${payload.img}" width="100%"></img><br/>
-                                      </a>  
-                                      <b>${payload.safe_title}</b><br/> 
-                                      <small>(Click the image to see the cartoon)</small>
-                                    </center>`;
-      }, (error) => {
-        console.error('An error occurred during the request..')
-        console.error(error);
-      })
-    })
+(async function init() {
+  client = await app.initialized();
+  client.events.on('app.activated', renderImageInSidebar);
+})();
+
+async function renderImageInSidebar() {
+  const displayElement = document.querySelector('.apptext');
+  let err, response;
+  let options = { client: true };
+
+  [err, response] = await to(client.request.get('https://xkcd.com/info.0.json', options));
+  if (err) {
+    displayElement.innerHTML = `
+    <center> There is a problem with xkcd. App is not able to fetch the image for the user. </center>
+    `;
+  }
+
+  const { img, safe_title } = response;
+  const imagePlaceholder = `<center>
+    <a href="${img}" target="_blank">
+        <img src="${img}" width="100%"></img><br/>
+      </a>
+      <b>${safe_title}</b><br/>
+      <small>(Click the image to see the cartoon)</small>
+    </center>`;
+
+  displayElement.innerHTML = imagePlaceholder;
 }
 
-function isDocumentReady() {
-  if (document.readyState != 'loading') {
-    console.info('Browser waiting until DOM loads...')
-  } else {
-    document.addEventListener('DOMContentLoaded', startAppRender);
-  }
+// utility fn to avoid exessive ussage of try..catch blocks
+function to(promise, improved) {
+  return promise
+    .then((data) => {
+      data = JSON.parse(data.response);
+      return [null, data];
+    })
+    .catch((err) => {
+      if (improved) {
+        Object.assign(err, improved);
+      }
+      return [err];
+    });
 }

@@ -3,6 +3,7 @@
 Request Method enables apps to make API requests to third-party applications.
 
 ![App preview](./screenshots/preview.png)
+![Requester Info placeholder](./screenshots/requester_info_page.png)
 
 ## Features Demonstrated
 

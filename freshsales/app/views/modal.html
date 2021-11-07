@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Modal Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  </head>
+  <body>
+    <div class="flex-container">
+      <pre class="response"> Here comes addtional space for you to utilize and build your app.</pre>
+
+      </div>
+    </div>
+  </body>
+  <script defer>
+    var client;
+
+    (async function init() {
+      client = await app.initialized();
+      let resElement = document.querySelector(".response");
+      let { data: {
+        response
+      } } = await client.instance.context();
+      // parse and stringify to render prettily on html view port
+      let objectify = JSON.parse(response);
+      resElement.innerHTML = JSON.stringify(objectify, null, 2);
+    })();
+  </script>
+  <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
+</html>

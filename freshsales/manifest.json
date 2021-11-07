@@ -1,0 +1,23 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshworks_crm": {
+      "location": {
+        "contact_entity_menu": {
+          "url": "index.html",
+          "icon": "styles/icon.svg"
+        }
+      }
+    }
+  },
+  "whitelisted-domains": [
+    "https://*.freshsales.io",
+    "https://*.myfreshworks.com",
+    "https://*.freshworks.com",
+    "https://xkcd.com"
+  ],
+  "engines": {
+    "node": "12.22.7",
+    "fdk": "7.1.0"
+  }
+}

@@ -10,8 +10,8 @@ function startAppRender() {
         displayElement.innerHTML = `<center>
                                       <a href="${payload.img}" target="_blank">
                                         <img src="${payload.img}" width="100%"></img><br/>
-                                      </a>  
-                                      <b>${payload.safe_title}</b><br/> 
+                                      </a>
+                                      <b>${payload.safe_title}</b><br/>
                                       <small>(Click the image to see the cartoon)</small>
                                     </center>`;
       }, (error) => {

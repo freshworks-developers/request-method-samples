@@ -9,17 +9,8 @@ var client;
 })();
 
 async function getContacts() {
-  let endpoint, options;
-  let { subdomain } = await client.iparams.get('subdomain');
-  endpoint = `https://${subdomain}.freshservice.com/api/v2/assets`;
-  options = {
-    headers: {
-      Authorization: `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform
-      'Content-Type': 'application/json'
-    }
-  };
-
-  let [err, response] = await to(client.request.get(endpoint, options));
+  
+  let [err, response] = await to(client.request.invokeTemplate("getContacts", {}));
   if (err) {
     console.error('API request to get asset details failed.', err);
   }

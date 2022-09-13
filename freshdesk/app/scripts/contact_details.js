@@ -11,16 +11,7 @@ var client;
 
 async function getContacts() {
   let err, reply;
-  let { subdomain } = await client.iparams.get('subdomain');
-  const URL = `https://${subdomain}.freshdesk.com/api/v2/contacts`;
-  var authOpts = {
-    headers: {
-      Authorization: `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform
-      'Content-Type': 'application/json'
-    }
-  };
-
-  [err, reply] = await to(client.request.get(URL, authOpts));
+  [err, reply] = await to(client.request.invokeTemplate("getContacts", {}));
   console.log(reply);
   if (err) console.error('Request failed \nReason', err);
   let { response } = reply;

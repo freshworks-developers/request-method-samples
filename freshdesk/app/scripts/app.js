@@ -8,7 +8,7 @@ var client;
 async function displayImageInSidebar() {
   const displayElement = document.getElementById('apptext');
   let options = { client: true };
-  let comicPayload = await client.request.get('https://xkcd.com/info.0.json', options);
+  let comicPayload = await client.request.invokeTemplate("getComicData", {});
   const { img, safe_title } = JSON.parse(comicPayload.response);
   const imagePlaceholder = `<center>
     <a href="${img}" target="_blank">

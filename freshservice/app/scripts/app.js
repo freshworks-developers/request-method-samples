@@ -10,7 +10,7 @@ async function renderImageInSidebar() {
   let err, response;
   let options = { client: true };
 
-  [err, response] = await to(client.request.get('https://xkcd.com/info.0.json', options));
+  [err, response] = await to(client.request.invokeTemplate("getComicData", {}));
   if (err) {
     displayElement.innerHTML = `
     <center> There is a problem with xkcd. App is not able to fetch the image for the user. </center>

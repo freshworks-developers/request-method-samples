@@ -11,12 +11,17 @@
           "url": "views/requester_info.html",
           "icon": "styles/images/icon.svg"
         }
-      }
+      },
+      "requests": {
+        "getComicData": {},
+        "getContacts": {
+            "staticIp": true
+          }
+        }
     }
   },
-  "whitelisted-domains": ["https://xkcd.com", "https://*.freshservice.com"],
   "engines": {
-    "node": "12.22.7",
-    "fdk": "7.1.0"
+    "node": "14.19.3",
+    "fdk": "8.4.0"
   }
 }

@@ -1,0 +1,20 @@
+{
+    "getComicData":{
+        "schema":{
+            "method":"GET",
+            "host":"xkcd.com",
+            "path":"/info.0.json"
+        }
+    },
+    "getContacts":{
+        "schema":{
+            "method":"GET",
+            "host":"<%= iparams.subdomain %>.freshservice.com",
+            "path":"/api/v2/contacts",
+            "headers": {
+                "Authorization": "Basic <%= encode(iparam.api_key) %>",
+                "Content-Type": "application/json"
+              }
+        }
+    }
+}

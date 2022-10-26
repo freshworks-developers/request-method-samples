@@ -1,6 +1,6 @@
 # Request Method for Freshservice
 
-Request Method enables apps to make API requests to third-party applications.
+Request Method enables apps to make API requests to third-party applications using [Request templates](../UserGuide.md)
 
 ![App preview](./screenshots/preview.png)
 ![Requester Info placeholder](./screenshots/requester_info_page.png)

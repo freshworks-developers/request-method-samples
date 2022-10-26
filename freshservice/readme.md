@@ -11,7 +11,7 @@ App location: ticket details page
 
 | Feature | Notes |
 | :---: | --- |
-| [`Request methods`](https://developer.freshservice.com/docs/request-method) | Request API is used to facilitate third-party API requests |
+| [`Request methods`](../UserGuide.md) | Request API is used to facilitate third-party API requests |
 
 ## Prerequisites
 

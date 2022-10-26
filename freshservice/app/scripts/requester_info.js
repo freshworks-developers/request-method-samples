@@ -3,18 +3,21 @@ var client;
 (async function init() {
   client = await app.initialized();
   client.events.on('app.activated', async function () {
-    let contacts = await getContacts();
-    renderPayload(contacts);
+    let assets = await getAssests();
+    renderPayload(assets);
   });
 })();
 
-async function getContacts() {
-  
-  let [err, response] = await to(client.request.invokeTemplate("getContacts", {}));
-  if (err) {
+async function getAssests() {
+  let assetsData
+  try{
+  let response = await client.request.invokeTemplate("getAssests", {});
+  console.log(response)
+  assetsData = JSON.parse(response.response)
+  }catch(err) {
     console.error('API request to get asset details failed.', err);
   }
-  return response;
+  return assetsData;
 }
 
 function renderPayload(payload) {

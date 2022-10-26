@@ -1,5 +1,5 @@
 {
-  "platform-version": "2.2",
+  "platform-version": "2.3",
   "product": {
     "freshservice": {
       "location": {
@@ -14,7 +14,7 @@
       },
       "requests": {
         "getComicData": {},
-        "getContacts": {
+        "getAssests": {
             "staticIp": true
           }
         }
@@ -22,6 +22,6 @@
   },
   "engines": {
     "node": "14.19.3",
-    "fdk": "8.4.0"
+    "fdk": "9.0.0"
   }
 }

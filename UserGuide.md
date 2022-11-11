@@ -376,7 +376,7 @@ The following go in the `"schema"` section of the request template:
       "Content-Type": "application/json"
     }
     ```
-    
+
 - `"query"`: Given that the `"page"` query can be parameterised, we can use `context` here to pass the page number at runtime, instead of hard-coding the page value:
 
     ```
@@ -502,3 +502,106 @@ async function getContacts(client, page = 1) {
 ```
 
 So, any function calling the updated `getContacts()` function can pass in the page number that we pass along to the template using `context`.
+
+===
+
+# Set up both FDK 8 and FDK 9
+
+If you are a developer who needs to maintain apps on both platform version 2.2 and 2.3 for a while, you can keep both FDK 8 and FDK 9 installed and set up on your machine.
+
+The main idea is to have one FDK major version installed globally, while another FDK version is setup locally and aliased to some handy command. In this case, you would want to keep FDK 9 installed globally (so that it can receive updates easily), and setup the latest FDK 8 locally and alias it.
+
+Watch this short video to see the process:
+
+https://www.youtube.com/watch?v=xupb2Yi2N_A
+
+## Step 0: Cleanup
+
+Remove FDK's user-level data directory:
+
+```
+rm -rf ~/.fdk
+```
+
+Uninstall globally installed FDK, just in case:
+
+```
+npm rm fdk -g
+```
+
+## Step 1: Install FDK 9 globally
+
+```
+npm install https://cdn.freshdev.io/assets/cli/fdk.tgz -g
+```
+
+Once installation succeeds, test the FDK version, you should see something like:
+
+```text
+$ fdk version
+Installed: 9.0.0
+Already Up to Date..!
+```
+
+## Step 2: Setup FDK 8 locally
+
+Instead of installing the package using the v8 tarball URL, download the tarball and extract it instead. I prefer to keep these user-local binaries in `~/bin/`.
+
+```
+mkdir -p ~/bin
+cd ~/bin
+```
+
+Get the tarball:
+
+```
+curl https://dl.freshdev.io/cli/fdk.tgz > fdk8.tgz
+```
+
+Extract it and rename the extracted directory to something handy, like `fdk8`:
+
+```
+tar -xzf fdk8.tgz
+mv package fdk8
+```
+
+Change to the fdk8 directory and install package dependencies locally:
+
+```
+cd fdk8
+npm install
+```
+
+The entry point for the fdk package is `index.js`, so you can do:
+
+```
+node index.js version
+```
+
+This should show you:
+
+```
+$ node index.js version
+Installed: 8.6.6
+Already Up to Date..!
+```
+
+## Step 3: Alias fdk8
+
+Set up a quick alias using:
+
+```
+alias fdk8="node ~/bin/fdk8/index.js"
+```
+
+This will only be available for the current session of the shell.
+
+If you want to persist this change, add the command above as a new line to your `~/.bashrc`, or `~/.zshrc` or whichever file your shell loads at startup, except provide absolute path to the `index.js` file, for example:
+
+```
+alias fdk8="node /Users/kadas/bin/fdk8/index.js"
+```
+
+## Step 4: Try them out
+
+You should now be able to use the `fdk` command for FDK 9 and the `fdk8` command for FDK 8.

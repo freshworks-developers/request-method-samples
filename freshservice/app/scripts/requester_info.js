@@ -3,6 +3,7 @@ var client;
 (async function init() {
   client = await app.initialized();
   client.events.on('app.activated', async function () {
+    console.log(await client.iparams.get())
     let assets = await getAssests();
     renderPayload(assets);
   });

@@ -2,27 +2,62 @@ var client;
 
 (async function init() {
   client = await app.initialized();
-  client.events.on('app.activated', renderImageInSidebar);
+  client.events.on('app.activated', renderStarWarsInfo);
 })();
 
-async function renderImageInSidebar() {
-  const displayElement = document.querySelector('.apptext');
-  let response;
+//To demonstrate a simple GET request
+async function getStarWarsChar() {
+  const starwarsCharsElement = document.querySelector('#starWarsCharsCount');
   try {
-    let comicResponse = await client.request.invokeTemplate("getComicData", {})
-    response = JSON.parse(comicResponse.response)
-    const { img, safe_title } = response;
-    const imagePlaceholder = `<center>
-    <a href="${img}" target="_blank">
-        <img src="${img}" width="100%"></img><br/>
-      </a>
-      <b>${safe_title}</b><br/>
-      <small>(Click the image to see the cartoon)</small>
-    </center>`;
-    displayElement.innerHTML = imagePlaceholder;
+    let starwarsChars = await client.request.invokeTemplate("getStarWarsPeople", {})
+    let starwarsCharsJSON = JSON.parse(starwarsChars.response)
+    starwarsCharsElement.innerHTML = starwarsCharsJSON.count;
   } catch (err) {
-    displayElement.innerHTML = `
-    <center> There is a problem with xkcd. App is not able to fetch the image for the user. </center>
-    `;
-  } 
+    starwarsCharsElement.innerHTML = `-` + err;
+  }
+}
+
+//To demonstrate a GET request with url path parameters
+async function getStarWarsCharDetails() {
+  const charNameElement = document.querySelector('#charName');
+  const vehicleElement = document.querySelector('#vehiclesCount');
+  const starshipsElement = document.querySelector('#starshipsCount');
+  try {
+    let starwarsCharDetail = await client.request.invokeTemplate("getStarWarsPeopleDetails", { "context": { "id": "1" } })
+    let starwarsCharsDetailJSON = JSON.parse(starwarsCharDetail.response)
+    charNameElement.innerHTML = starwarsCharsDetailJSON.name
+    vehicleElement.innerHTML += starwarsCharsDetailJSON.vehicles.length
+    starshipsElement.innerHTML += starwarsCharsDetailJSON.starships.length
+  } catch (err) {
+    charNameElement.innerHTML += `-`;
+    vehicleElement.innerHTML += `-`;
+    starshipsElement.innerHTML += `-`;
+  }
+}
+
+//To demonstrate a GET request with url query parameters
+async function searchForStarship(){
+  const starshipNameElement = document.querySelector('#starshipName');
+  const starshipModelElement = document.querySelector('#starshipModel');
+  const starshipManufracturerElement = document.querySelector('#starshipManufacturer');
+  const starshipClassElement = document.querySelector('#starshipClass');
+  try {
+    let starshipDetail = await client.request.invokeTemplate("starwarsStarshipSearch", { "context": { "starshipname": "Death Star" } })
+    let starshipDetailJSON = JSON.parse(starshipDetail.response)
+    starshipNameElement.innerHTML = starshipDetailJSON.results[0].name
+    starshipModelElement.innerHTML += starshipDetailJSON.results[0].model
+    starshipManufracturerElement.innerHTML += starshipDetailJSON.results[0].manufacturer
+    starshipClassElement.innerHTML += starshipDetailJSON.results[0].starship_class
+  } catch (err) {
+    starshipNameElement.innerHTML += `-`;
+    starshipModelElement.innerHTML += `-`;
+    starshipManufracturerElement.innerHTML += `-`;
+    starshipClassElement.innerHTML += `-`;
+  }
+}
+
+async function renderStarWarsInfo() {
+  await getStarWarsChar()
+  await getStarWarsCharDetails()
+  await searchForStarship()
 }

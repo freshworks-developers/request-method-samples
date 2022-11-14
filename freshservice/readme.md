@@ -2,7 +2,7 @@
 
 Request Method enables apps to make API requests to third-party applications using [Request templates](../UserGuide.md)
 
-![App preview](./screenshots/preview.png)
+![App preview](./screenshots/ticket_sidebar.png)
 ![Requester Info placeholder](./screenshots/requester_info_page.png)
 
 ## Features Demonstrated
@@ -12,6 +12,8 @@ App location: ticket details page
 | Feature | Notes |
 | :---: | --- |
 | [`Request methods`](../UserGuide.md) | Request API is used to facilitate third-party API requests |
+
+For details about requests, check out [requests.json](./config/requests.json) and how they are invoked with `client.request.invokeTemplate()` method in [app.js](./app/scripts/app.js) and [requester_info.js](./app/scripts/requester_info.js)
 
 ## Prerequisites
 

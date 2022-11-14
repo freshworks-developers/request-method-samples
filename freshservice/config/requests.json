@@ -1,9 +1,23 @@
 {
-    "getComicData": {
+    "getStarWarsPeople": {
         "schema": {
             "method": "GET",
-            "host": "xkcd.com",
-            "path": "/info.0.json"
+            "host": "swapi.dev",
+            "path": "/api/people"
+        }
+    },
+    "getStarWarsPeopleDetails": {
+        "schema": {
+            "method": "GET",
+            "host": "swapi.dev",
+            "path": "/api/people/<%= context.id %>"
+        }
+    },
+    "starwarsStarshipSearch":{
+        "schema": {
+            "method": "GET",
+            "host": "swapi.dev",
+            "path": "/api/starships?search=<%= context.starshipname %>"
         }
     },
     "getAssests": {
@@ -15,9 +29,6 @@
                 "Authorization": "Basic <%= encode(iparam.api_key) %>",
                 "Content-Type": "application/json"
             }
-        },
-        "options": {
-            "isOAuth": false
         }
     }
 }

@@ -17,7 +17,10 @@
         "schema": {
             "method": "GET",
             "host": "swapi.dev",
-            "path": "/api/starships?search=<%= context.starshipname %>"
+            "path": "/api/starships",
+            "query": {
+                "search": "<%= context.starshipname %>"
+            }
         }
     },
     "getContacts":{

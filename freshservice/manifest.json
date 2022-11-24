@@ -16,9 +16,7 @@
         "getStarWarsPeople": {},
         "getStarWarsPeopleDetails":{},
         "starwarsStarshipSearch":{},
-        "getAssests": {
-            "staticIp": true
-          }
+        "getAssests": {}
         }
     }
   },

@@ -1,0 +1,28 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateCallback"
+        }
+      },
+      "requests": {
+        "getStarWarsPeople": {},
+        "getStarWarsPeopleDetails": {},
+        "starwarsStarshipSearch": {},
+        "getContacts": {}
+      }
+    }
+  },
+  "engines": {
+    "node": "14.19.3",
+    "fdk": "9.0.0"
+  }
+}

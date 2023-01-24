@@ -2,5 +2,8 @@
 
 Request Method enables apps to make API requests to third-party applications using [Request templates](./UserGuide.md)
 
-- [Freshdesk](./freshdesk/)
-- [Freshservice](./freshservice/)
+Feature samples - 
+
+Product specific sample -
+- [Freshdesk](./product-samples/freshdesk/)
+- [Freshservice](./product-samples/freshservice/)

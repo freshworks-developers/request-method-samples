@@ -1,0 +1,48 @@
+{
+    "getStarWarsPeople": {
+        "schema": {
+            "method": "GET",
+            "host": "swapi.dev",
+            "path": "/api/people"
+        }
+    },
+    "getStarWarsPeopleDetails": {
+        "schema": {
+            "method": "GET",
+            "host": "swapi.dev",
+            "path": "/api/people/<%= context.id %>"
+        }
+    },
+    "starwarsStarshipSearch": {
+        "schema": {
+            "method": "GET",
+            "host": "swapi.dev",
+            "path": "/api/starships",
+            "query": {
+                "search": "<%= context.starshipname %>"
+            }
+        }
+    },
+    "getContacts": {
+        "schema": {
+            "method": "GET",
+            "host": "<%= iparams.subdomain %>.freshdesk.com",
+            "path": "/api/v2/contacts",
+            "headers": {
+                "Authorization": "Basic <%= encode(iparam.api_key) %>",
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "replyTicket": {
+        "schema": {
+            "method": "PUT",
+            "host": "<%= iparams.subdomain %>.freshdesk.com",
+            "path": "/api/v2/tickets/<%= context.id %>/reply",
+            "headers": {
+                "Authorization": "Basic <%= encode(iparam.api_key) %>",
+                "Content-Type": "application/json"
+            }
+        }
+    }
+}

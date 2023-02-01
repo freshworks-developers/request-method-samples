@@ -8,6 +8,7 @@
     },
     "getStarWarsPeopleDetails": {
         "schema": {
+            "protocol":"https",
             "method": "GET",
             "host": "swapi.dev",
             "path": "/api/people/<%= context.id %>"
@@ -36,11 +37,24 @@
     },
     "replyTicket": {
         "schema": {
+            "protocol":"https",
             "method": "PUT",
             "host": "<%= iparams.subdomain %>.freshdesk.com",
             "path": "/api/v2/tickets/<%= context.id %>/reply",
             "headers": {
                 "Authorization": "Basic <%= encode(iparam.api_key) %>",
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "iparamValidate":{
+        "schema": {
+            "protocol":"https",
+            "method": "GET",
+            "host": "<%= context.subdomain %>.freshdesk.com",
+            "path": "/api/v2/tickets",
+            "headers": {
+                "Authorization": "Basic <%= encode(context.api_key) %>",
                 "Content-Type": "application/json"
             }
         }

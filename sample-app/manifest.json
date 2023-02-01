@@ -14,15 +14,17 @@
         }
       },
       "requests": {
+        "iparamValidate":{},
         "getStarWarsPeople": {},
         "getStarWarsPeopleDetails": {},
         "starwarsStarshipSearch": {},
-        "getContacts": {}
+        "getContacts": {},
+        "replyTicket": {}
       }
     }
   },
   "engines": {
-    "node": "14.19.3",
+    "node": "18.13.0",
     "fdk": "9.0.0"
   }
 }

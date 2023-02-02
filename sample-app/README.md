@@ -1,6 +1,14 @@
-## Your First App
+### Request templates sample app
+Sample app to demonstrate the usage of request templates in both front-end (`client.request.invokeTemplate()`) and serverless (`$request.invokeTemplate()`) components of the app.
 
-This app displays the name of the requester of a freshdesk ticket in the ticket_sidebar placeholder
+## Development Platform Features used in this app
+|Feature|Request template key|
+|GET Method|`getStarWarsPeople`|
+|GET Method with query params|`starwarsStarshipSearch`|
+|GET Method with path params|`getStarWarsPeopleDetails`|
+|GET Method with Freshdesk API and authorization|`getContacts`|
+|PUT Method with body|`replyTicket`|
+|Customs iparams page|`iparamValidate`|
 
 ### Files and Folders
     .
@@ -14,7 +22,9 @@ This app displays the name of the requester of a freshdesk ticket in the ticket_
     │       │   └── icon.svg
     │       └── style.css
     ├── config                    A folder to place all the configuration files
-    │   └── iparams.json
+    │   ├── assets               
+    │   │   └── iparams.css
+    │   │   └── iparams.js
+    │   └── iparams.html
+    │   └── requests.json         A JSON file holding all the request templates
     └── manifest.json             A JSON file holding meta data for app to run on platform
-
-Explore [more of app sample apps](https://community.developers.freshworks.com/t/freshworks-sample-apps/3604) on the Freshworks github respository.

@@ -27,7 +27,7 @@
     "getContacts": {
         "schema": {
             "method": "GET",
-            "host": "<%= iparams.subdomain %>.freshdesk.com",
+            "host": "<%= iparam.subdomain %>.freshdesk.com",
             "path": "/api/v2/contacts",
             "headers": {
                 "Authorization": "Basic <%= encode(iparam.api_key) %>",
@@ -39,7 +39,7 @@
         "schema": {
             "protocol":"https",
             "method": "PUT",
-            "host": "<%= iparams.subdomain %>.freshdesk.com",
+            "host": "<%= iparam.subdomain %>.freshdesk.com",
             "path": "/api/v2/tickets/<%= context.id %>/reply",
             "headers": {
                 "Authorization": "Basic <%= encode(iparam.api_key) %>",

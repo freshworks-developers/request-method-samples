@@ -9,7 +9,7 @@
         }
       },
       "requests": {
-        "asanaGetWorkspace":{}
+        "asanaGetWorkspace": {}
       }
     }
   },

@@ -6,6 +6,5 @@
 **/node_modules/**
 **/test_data/**
 **/dist/**
-**/config/oauth_config.json
 **/config/iparams_test_data.json
 **/log/**/*

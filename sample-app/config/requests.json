@@ -27,7 +27,6 @@
     "getContacts": {
         "schema": {
             "method": "GET",
-            "host": "<%= iparam.subdomain %>.freshdesk.com",
             "path": "/api/v2/contacts",
             "headers": {
                 "Authorization": "Basic <%= encode(iparam.api_key) %>",

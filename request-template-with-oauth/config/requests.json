@@ -1,16 +1,16 @@
 {
-    "asanaGetWorkspace": {
-        "schema": {
-            "method": "GET",
-            "host": "app.asana.com",
-            "path": "/api/1.0/workspaces",
-            "headers": {
-                "Authorization": "bearer <%=access_token%>",
-                "Content-Type": "application/json"
-            }
-        },
-        "options": {
-            "isOAuth": true
-        }
+  "asanaGetWorkspace": {
+    "schema": {
+      "method": "GET",
+      "host": "app.asana.com",
+      "path": "/api/1.0/workspaces",
+      "headers": {
+        "Authorization": "bearer <%= access_token %>",
+        "Content-Type": "application/json"
+      }
+    },
+    "options": {
+      "isOAuth": true
     }
+  }
 }

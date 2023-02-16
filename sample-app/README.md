@@ -1,7 +1,9 @@
 ### Request templates sample app
+
 Sample app to demonstrate the usage of request templates in both front-end (`client.request.invokeTemplate()`) and serverless (`$request.invokeTemplate()`) components of the app.
 
 ## Development Platform Features used in this app
+
 |Feature|Request template key|
 |GET Method|`getStarWarsPeople`|
 |GET Method with query params|`starwarsStarshipSearch`|
@@ -9,8 +11,10 @@ Sample app to demonstrate the usage of request templates in both front-end (`cli
 |GET Method with Freshdesk API and authorization|`getContacts`|
 |PUT Method with body|`replyTicket`|
 |Customs iparams page|`iparamValidate`|
+|SMI function with Request Template|`getTicketWithId`|
 
 ### Files and Folders
+
     .
     ├── README.md                 A file for your future self and developer friends to learn about app
     ├── app                       A folder to place all assets required for frontend components
@@ -22,7 +26,7 @@ Sample app to demonstrate the usage of request templates in both front-end (`cli
     │       │   └── icon.svg
     │       └── style.css
     ├── config                    A folder to place all the configuration files
-    │   ├── assets               
+    │   ├── assets
     │   │   └── iparams.css
     │   │   └── iparams.js
     │   └── iparams.html

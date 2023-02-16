@@ -1,61 +1,73 @@
 {
-    "getStarWarsPeople": {
-        "schema": {
-            "method": "GET",
-            "host": "swapi.dev",
-            "path": "/api/people"
-        }
-    },
-    "getStarWarsPeopleDetails": {
-        "schema": {
-            "protocol":"https",
-            "method": "GET",
-            "host": "swapi.dev",
-            "path": "/api/people/<%= context.id %>"
-        }
-    },
-    "starwarsStarshipSearch": {
-        "schema": {
-            "method": "GET",
-            "host": "swapi.dev",
-            "path": "/api/starships",
-            "query": {
-                "search": "<%= context.starshipname %>"
-            }
-        }
-    },
-    "getContacts": {
-        "schema": {
-            "method": "GET",
-            "path": "/api/v2/contacts",
-            "headers": {
-                "Authorization": "Basic <%= encode(iparam.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
-    },
-    "replyTicket": {
-        "schema": {
-            "protocol":"https",
-            "method": "PUT",
-            "host": "<%= iparam.subdomain %>.freshdesk.com",
-            "path": "/api/v2/tickets/<%= context.id %>/reply",
-            "headers": {
-                "Authorization": "Basic <%= encode(iparam.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
-    },
-    "iparamValidate":{
-        "schema": {
-            "protocol":"https",
-            "method": "GET",
-            "host": "<%= context.subdomain %>.freshdesk.com",
-            "path": "/api/v2/tickets",
-            "headers": {
-                "Authorization": "Basic <%= encode(context.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
+  "getStarWarsPeople": {
+    "schema": {
+      "method": "GET",
+      "host": "swapi.dev",
+      "path": "/api/people"
     }
+  },
+  "getStarWarsPeopleDetails": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "swapi.dev",
+      "path": "/api/people/<%= context.id %>"
+    }
+  },
+  "starwarsStarshipSearch": {
+    "schema": {
+      "method": "GET",
+      "host": "swapi.dev",
+      "path": "/api/starships",
+      "query": {
+        "search": "<%= context.starshipname %>"
+      }
+    }
+  },
+  "getContacts": {
+    "schema": {
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/contacts",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "replyTicket": {
+    "schema": {
+      "protocol": "https",
+      "method": "PUT",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets/<%= context.id %>/reply",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "iparamValidate": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= context.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(context.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "getTicketWithId": {
+    "schema": {
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets/<%= context.id %>",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  }
 }

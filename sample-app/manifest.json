@@ -18,12 +18,18 @@
         }
       },
       "requests": {
-        "iparamValidate":{},
+        "iparamValidate": {},
         "getStarWarsPeople": {},
         "getStarWarsPeopleDetails": {},
         "starwarsStarshipSearch": {},
         "getContacts": {},
-        "replyTicket": {}
+        "replyTicket": {},
+        "getTicketWithId": {}
+      },
+      "functions": {
+        "getTicketDetails": {
+          "timeout": 10
+        }
       }
     }
   },

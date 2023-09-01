@@ -16,5 +16,34 @@ exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+    usingDynamicHost:async function (){
+        let result
+        try{
+            result =await $request.invokeTemplate("dynamicHost", {
+                context:{
+                    host:"swapi.dev"
+                }
+            })
+            console.log("Dynamic Host :",result)
+        }catch(error){
+            console.error(error)
+        }
+        renderData(null,result)
+    },
+    usingQueryParams: async function (options){
+        let result
+        try{
+            result =await $request.invokeTemplate("dynamicQueryParams", {
+                context:{},
+                query:{
+                    query:options.queryString
+                }
+            })
+            console.log("Dynamic Query Params :",result)
+        }catch(error){
+            console.error(error)
+        }
+        renderData(null,result)
     }
 }

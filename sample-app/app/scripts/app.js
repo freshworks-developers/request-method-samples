@@ -56,8 +56,32 @@ async function searchForStarship(){
   }
 }
 
+async function invokeSMIWithDynamicHost(){
+  //Invoking SMI which has the host as parameter supported only in Serverless
+  try{
+    let res = await client.request.invoke("usingDynamicHost",{})
+    console.log(res)
+  }catch(error){
+    console.error(error)
+  }
+}
+
+async function invokeSMIWithDynamicQueryParams(){
+  try{
+    //dynamicQueryParams request template supporting dynamic query params where SMI uses a status filter and Request method uses priority filter in the query params.
+    let statusFilterRes = await client.request.invoke("usingQueryParams",{queryString:"status:2 OR status:3 OR status:6 OR status:7"})
+    console.log("Ticket filter with all unresolved",statusFilterRes)
+    let priorityFilterRes = await client.request.invokeTemplate("dynamicQueryParams", { "context": {}, "query":{"query":"priority:3"} })
+    console.log("Ticket filter with high priority",priorityFilterRes)
+  }catch(error){
+    console.error(error)
+  }
+}
+
 async function renderStarWarsInfo() {
   await getStarWarsChar()
   await getStarWarsCharDetails()
   await searchForStarship()
+  await invokeSMIWithDynamicHost()
+  await invokeSMIWithDynamicQueryParams()
 }

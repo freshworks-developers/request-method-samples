@@ -23,7 +23,17 @@
         "getStarWarsPeopleDetails": {},
         "starwarsStarshipSearch": {},
         "getContacts": {},
-        "replyTicket": {}
+        "replyTicket": {},
+        "dynamicHost":{},
+        "dynamicQueryParams":{}
+      },
+      "functions":{
+        "usingDynamicHost":{
+          "timeout":10
+        },
+        "usingQueryParams":{
+          "timeout":10
+        }
       }
     }
   },

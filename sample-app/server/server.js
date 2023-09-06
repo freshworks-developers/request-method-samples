@@ -3,6 +3,7 @@ exports = {
         { event: 'onTicketCreate', callback: 'onTicketCreateCallback' }
     ],
     onTicketCreateCallback: async function (payload) {
+        //Request method invocation from Serverless with $request.invokeTemplate
         let ticket = payload.data.ticket
         try {
             await $request.invokeTemplate("replyTicket", {
@@ -18,6 +19,7 @@ exports = {
         }
     },
     usingDynamicHost:async function (){
+        //Request method invocation with $request.invokeTemplate that allows host substitution from context only in Serverless functions
         let result
         try{
             result =await $request.invokeTemplate("dynamicHost", {
@@ -32,6 +34,7 @@ exports = {
         renderData(null,result)
     },
     usingQueryParams: async function (options){
+        //Request method invocation with $request.invokeTemplate that allows dynamic query parameters
         let result
         try{
             result =await $request.invokeTemplate("dynamicQueryParams", {

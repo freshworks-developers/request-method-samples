@@ -3,6 +3,7 @@ Sample app to demonstrate the usage of request templates in both front-end (`cli
 
 ## Development Platform Features used in this app
 |Feature|Request template key|
+|----|----|
 |GET Method|`getStarWarsPeople`|
 |GET Method with query params|`starwarsStarshipSearch`|
 |GET Method with path params|`getStarWarsPeopleDetails`|

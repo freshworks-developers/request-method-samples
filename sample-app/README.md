@@ -10,7 +10,8 @@ Sample app to demonstrate the usage of request templates in both front-end (`cli
 |PUT Method with body|`replyTicket`|
 |Customs iparams page|`iparamValidate`|
 |GET Method with host dynamic substitution from Serverless|`dynamicHost`|
-|GET Method with dynamic query params during runtime|`dynamicQueryParams`
+|GET Method with dynamic query params during runtime|`dynamicQueryParams`|
+|GET Method with query params defined in requests.json|`listAllTickets`|
 
 ### Files and Folders
     .

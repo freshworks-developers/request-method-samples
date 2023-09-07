@@ -18,21 +18,22 @@
         }
       },
       "requests": {
-        "iparamValidate":{},
+        "iparamValidate": {},
         "getStarWarsPeople": {},
         "getStarWarsPeopleDetails": {},
         "starwarsStarshipSearch": {},
         "getContacts": {},
         "replyTicket": {},
-        "dynamicHost":{},
-        "dynamicQueryParams":{}
+        "dynamicHost": {},
+        "dynamicQueryParams": {},
+        "listAllTickets": {}
       },
-      "functions":{
-        "usingDynamicHost":{
-          "timeout":10
+      "functions": {
+        "usingDynamicHost": {
+          "timeout": 10
         },
-        "usingQueryParams":{
-          "timeout":10
+        "usingQueryParams": {
+          "timeout": 10
         }
       }
     }

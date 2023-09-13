@@ -3,12 +3,16 @@ Sample app to demonstrate the usage of request templates in both front-end (`cli
 
 ## Development Platform Features used in this app
 |Feature|Request template key|
+|----|----|
 |GET Method|`getStarWarsPeople`|
 |GET Method with query params|`starwarsStarshipSearch`|
 |GET Method with path params|`getStarWarsPeopleDetails`|
 |GET Method with Freshdesk API and authorization|`getContacts`|
 |PUT Method with body|`replyTicket`|
 |Customs iparams page|`iparamValidate`|
+|GET Method with host dynamic substitution from Serverless|`dynamicHost`|
+|GET Method with dynamic query params during runtime|`dynamicQueryParams`|
+|GET Method with query params defined in requests.json|`listAllTickets`|
 
 ### Files and Folders
     .

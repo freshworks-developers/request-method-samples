@@ -18,17 +18,28 @@
         }
       },
       "requests": {
-        "iparamValidate":{},
+        "iparamValidate": {},
         "getStarWarsPeople": {},
         "getStarWarsPeopleDetails": {},
         "starwarsStarshipSearch": {},
         "getContacts": {},
-        "replyTicket": {}
+        "replyTicket": {},
+        "dynamicHost": {},
+        "dynamicQueryParams": {},
+        "listAllTickets": {}
+      },
+      "functions": {
+        "usingDynamicHost": {
+          "timeout": 10
+        },
+        "usingQueryParams": {
+          "timeout": 10
+        }
       }
     }
   },
   "engines": {
     "node": "18.13.0",
-    "fdk": "9.0.0"
+    "fdk": "9.0.5"
   }
 }

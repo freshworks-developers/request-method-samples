@@ -8,7 +8,7 @@
     },
     "getStarWarsPeopleDetails": {
         "schema": {
-            "protocol":"https",
+            "protocol": "https",
             "method": "GET",
             "host": "swapi.dev",
             "path": "/api/people/<%= context.id %>"
@@ -27,6 +27,7 @@
     "getContacts": {
         "schema": {
             "method": "GET",
+            "host": "<%= iparam.subdomain %>.freshdesk.com",
             "path": "/api/v2/contacts",
             "headers": {
                 "Authorization": "Basic <%= encode(iparam.api_key) %>",
@@ -36,8 +37,8 @@
     },
     "replyTicket": {
         "schema": {
-            "protocol":"https",
-            "method": "PUT",
+            "protocol": "https",
+            "method": "POST",
             "host": "<%= iparam.subdomain %>.freshdesk.com",
             "path": "/api/v2/tickets/<%= context.id %>/reply",
             "headers": {
@@ -46,15 +47,51 @@
             }
         }
     },
-    "iparamValidate":{
+    "iparamValidate": {
         "schema": {
-            "protocol":"https",
+            "protocol": "https",
             "method": "GET",
             "host": "<%= context.subdomain %>.freshdesk.com",
             "path": "/api/v2/tickets",
             "headers": {
                 "Authorization": "Basic <%= encode(context.api_key) %>",
                 "Content-Type": "application/json"
+            }
+        }
+    },
+    "dynamicHost": {
+        "schema": {
+            "protocol": "https",
+            "method": "GET",
+            "host": "<%= context.host %>",
+            "path": "/api/planets"
+        }
+    },
+    "dynamicQueryParams": {
+        "schema": {
+            "protocol": "https",
+            "method": "GET",
+            "host": "<%= iparam.subdomain %>.freshdesk.com",
+            "path": "/api/v2/search/tickets",
+            "headers": {
+                "Authorization": "Basic <%= encode(iparam.api_key) %>",
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "listAllTickets": {
+        "schema": {
+            "protocol": "https",
+            "method": "GET",
+            "host": "<%= iparam.subdomain %>.freshdesk.com",
+            "path": "/api/v2/tickets",
+            "headers": {
+                "Authorization": "Basic <%= encode(iparam.api_key) %>",
+                "Content-Type": "application/json"
+            },
+            "query":{
+                "order_type":"desc",
+                "order_by":"updated_at"
             }
         }
     }

@@ -1,98 +1,134 @@
 {
-    "getStarWarsPeople": {
-        "schema": {
-            "method": "GET",
-            "host": "swapi.dev",
-            "path": "/api/people"
-        }
-    },
-    "getStarWarsPeopleDetails": {
-        "schema": {
-            "protocol": "https",
-            "method": "GET",
-            "host": "swapi.dev",
-            "path": "/api/people/<%= context.id %>"
-        }
-    },
-    "starwarsStarshipSearch": {
-        "schema": {
-            "method": "GET",
-            "host": "swapi.dev",
-            "path": "/api/starships",
-            "query": {
-                "search": "<%= context.starshipname %>"
-            }
-        }
-    },
-    "getContacts": {
-        "schema": {
-            "method": "GET",
-            "host": "<%= iparam.subdomain %>.freshdesk.com",
-            "path": "/api/v2/contacts",
-            "headers": {
-                "Authorization": "Basic <%= encode(iparam.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
-    },
-    "replyTicket": {
-        "schema": {
-            "protocol": "https",
-            "method": "POST",
-            "host": "<%= iparam.subdomain %>.freshdesk.com",
-            "path": "/api/v2/tickets/<%= context.id %>/reply",
-            "headers": {
-                "Authorization": "Basic <%= encode(iparam.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
-    },
-    "iparamValidate": {
-        "schema": {
-            "protocol": "https",
-            "method": "GET",
-            "host": "<%= context.subdomain %>.freshdesk.com",
-            "path": "/api/v2/tickets",
-            "headers": {
-                "Authorization": "Basic <%= encode(context.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
-    },
-    "dynamicHost": {
-        "schema": {
-            "protocol": "https",
-            "method": "GET",
-            "host": "<%= context.host %>",
-            "path": "/api/planets"
-        }
-    },
-    "dynamicQueryParams": {
-        "schema": {
-            "protocol": "https",
-            "method": "GET",
-            "host": "<%= iparam.subdomain %>.freshdesk.com",
-            "path": "/api/v2/search/tickets",
-            "headers": {
-                "Authorization": "Basic <%= encode(iparam.api_key) %>",
-                "Content-Type": "application/json"
-            }
-        }
-    },
-    "listAllTickets": {
-        "schema": {
-            "protocol": "https",
-            "method": "GET",
-            "host": "<%= iparam.subdomain %>.freshdesk.com",
-            "path": "/api/v2/tickets",
-            "headers": {
-                "Authorization": "Basic <%= encode(iparam.api_key) %>",
-                "Content-Type": "application/json"
-            },
-            "query":{
-                "order_type":"desc",
-                "order_by":"updated_at"
-            }
-        }
+  "getStarWarsPeople": {
+    "schema": {
+      "method": "GET",
+      "host": "swapi.dev",
+      "path": "/api/people"
     }
+  },
+  "getStarWarsPeopleDetails": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "swapi.dev",
+      "path": "/api/people/<%= context.id %>"
+    }
+  },
+  "starwarsStarshipSearch": {
+    "schema": {
+      "method": "GET",
+      "host": "swapi.dev",
+      "path": "/api/starships",
+      "query": {
+        "search": "<%= context.starshipname %>"
+      }
+    }
+  },
+  "getContacts": {
+    "schema": {
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/contacts",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "replyTicket": {
+    "schema": {
+      "protocol": "https",
+      "method": "POST",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets/<%= context.id %>/reply",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "iparamValidate": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= context.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(context.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "dynamicHost": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= context.host %>",
+      "path": "/api/planets"
+    }
+  },
+  "dynamicQueryParams": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/search/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "listAllTickets": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "order_type": "desc",
+        "order_by": "updated_at"
+      }
+    }
+  },
+  "visaGetForexRate": {
+    "schema": {
+      "method": "POST",
+      "protocol": "https",
+      "host": "<%= context.host %>",
+      "path": "<%= context.path %>",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Basic <%= encode(app_settings.visa.username + ':' + app_settings.visa.password) %>"
+      }
+    },
+    "options": {
+      "security": {
+        "cert": "<%= app_settings.visa.cert %>",
+        "key": "<%= app_settings.visa.key %>"
+      }
+    }
+  },
+  "visaMerchantSearch": {
+    "schema": {
+      "method": "POST",
+      "protocol": "https",
+      "host": "<%= app_settings.visaMerchant.host %>",
+      "path": "<%= app_settings.visaMerchant.path %>",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Basic <%= encode(app_settings.visa.username + ':' + app_settings.visa.password) %>"
+      }
+    },
+    "options": {
+      "security": {
+        "cert": "<%= app_settings.visa.cert %>",
+        "key": "<%= app_settings.visa.key %>"
+      }
+    }
+  }
 }

@@ -10,9 +10,11 @@ Sample app to demonstrate the usage of request templates in both front-end (`cli
 |GET Method with Freshdesk API and authorization|`getContacts`|
 |PUT Method with body|`replyTicket`|
 |Customs iparams page|`iparamValidate`|
-|GET Method with host dynamic substitution from Serverless|`dynamicHost`|
+|GET Method with dynamic host substitution from Serverless|`dynamicHost`|
 |GET Method with dynamic query params during runtime|`dynamicQueryParams`|
 |GET Method with query params defined in requests.json|`listAllTickets`|
+|POST Method with 2-way SSL and values configured in app settings|`visaMerchantSearch`|
+|POST Method with 2-way SSL and dynamic host substitution values configured in app settings|`visaGetForexRate`|
 
 ### Files and Folders
     .

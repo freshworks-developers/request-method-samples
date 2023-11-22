@@ -26,7 +26,9 @@
         "replyTicket": {},
         "dynamicHost": {},
         "dynamicQueryParams": {},
-        "listAllTickets": {}
+        "listAllTickets": {},
+        "visaGetForexRate": {},
+        "visaMerchantSearch": {}
       },
       "functions": {
         "usingDynamicHost": {

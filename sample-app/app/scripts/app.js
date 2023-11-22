@@ -81,12 +81,52 @@ async function invokeWithDynamicQueryParams() {
     //Request method to list all tickets sorted by due by 
     let dueByTicketList = await client.request.invokeTemplate("listAllTickets", { "context": {}, "query": { "order_by": "due_by", "include": "stats" } })
     console.log("Request method response to list tickets", dueByTicketList)
-    if(latestUpdateTicketList.response===dueByTicketList.response)
+    if (latestUpdateTicketList.response === dueByTicketList.response)
       console.log("Request method responds with latest updated tickets with stats as query params defined in request.json have higher precedence")
     //Request method responds with latest updated tickets with stats as query params defined in request.json have higher precedence
   } catch (error) {
     console.error(error)
   }
+}
+
+async function invokeRequestMethodWith2WaySSL() {
+  //Request method which uses client-side certificates, host, path and authorization for 2-way SSL configured with app_settings
+  let merchantSearch = await client.request.invokeTemplate("visaMerchantSearch", {
+    body: JSON.stringify({
+      "searchOptions": {
+        "matchScore": "true",
+        "maxRecords": "10",
+        "matchIndicators": "true",
+        "proximity": [
+          "merchantName"
+        ],
+        "wildCard": [
+          "merchantName"
+        ]
+      },
+      "header": {
+        "startIndex": "0",
+        "requestMessageId": "VCO_GMR_001",
+        "messageDateTime": "2015-08-28T22:05:00.000"
+      },
+      "searchAttrList": {
+        "merchantPhoneNumber": "4153440351",
+        "merchantCity": "San Francisco",
+        "merchantCountryCode": "840",
+        "merchantPostalCode": "94107",
+        "paymentAcceptanceMethod": "F2F",
+        "visaStoreId": "161688518",
+        "merchantStreetAddress": "280 King St",
+        "merchantState": "CA",
+        "merchantName": "starbucks ",
+        "terminalType": "SWIPE"
+      },
+      "responseAttrList": [
+        "GNSTANDARD"
+      ]
+    })
+  })
+  console.log("Response from request method using 2 way SSL", JSON.stringify(merchantSearch.response))
 }
 
 async function renderStarWarsInfo() {
@@ -95,4 +135,5 @@ async function renderStarWarsInfo() {
   await searchForStarship()
   await invokeSMIWithDynamicHost()
   await invokeWithDynamicQueryParams()
+  await invokeRequestMethodWith2WaySSL()
 }

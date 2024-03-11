@@ -1,0 +1,14 @@
+{
+	"api_key": {
+		"display_name": "Freshdesk API key",
+		"description": "freshdesk API requires app calls to include API keys in all of their requests",
+		"secure": true,
+		"type": "text",
+		"required": true
+	},
+	"subdomain": {
+		"display_name": "Freshdesk Domain",
+		"type": "text",
+		"description": "freshdesk product doamin"
+	}
+}

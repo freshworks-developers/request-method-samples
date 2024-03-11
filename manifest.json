@@ -1,0 +1,52 @@
+{
+  "platform-version": "3.0",
+  "modules": {
+    "common": {
+      "location": {
+        "full_page_app": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "requests": {
+        "getContacts":{},
+        "replyTicket":{},
+        "dynamicHost":{},
+        "dynamicQueryParams":{},
+        "listAllTickets":{}
+      },
+      "functions": {
+        "usingDynamicHost": {
+          "timeout": 10
+        },
+        "usingQueryParams": {
+          "timeout": 10
+        }
+      }
+    },
+    "support_ticket": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      }
+    },
+    "deal": {
+      "location": {
+        "deal_entity_menu": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "deal_quick_actions": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      }
+    }
+  },
+  "engines": {
+    "node": "18.13.0",
+    "fdk": "9.1.0"
+  }
+}

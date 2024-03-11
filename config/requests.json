@@ -1,0 +1,38 @@
+{
+  "dynamicHost": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= context.host %>",
+      "path": "/api/planets"
+    }
+  },
+  "dynamicQueryParams": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/search/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "listAllTickets": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "order_type": "desc",
+        "order_by": "updated_at"
+      }
+    }
+  }
+}

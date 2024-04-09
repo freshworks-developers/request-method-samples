@@ -1,4 +1,4 @@
-## Instance method sample app
+## Request method sample app
 
 This sample app demonstrates [request method](https://developers-dev.freshworks.com/docs/app-sdk/v3.0/common/advanced-interfaces/request-method/) on Platform version 3.0 in different modules.
 

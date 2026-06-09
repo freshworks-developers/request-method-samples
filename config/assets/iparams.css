@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #12344d;
+  background: #fff;
+}
+
+.nx-install h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.nx-install__subtitle {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: #6b7c93;
+}
+
+.nx-install fw-input,
+.nx-install fw-checkbox {
+  display: block;
+  margin-bottom: 12px;
+}

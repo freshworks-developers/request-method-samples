@@ -1,0 +1,15 @@
+{
+  "integrations": {
+    "github": {
+      "display_name": "GitHub (demo OAuth)",
+      "client_id": "YOUR_GITHUB_CLIENT_ID",
+      "client_secret": "YOUR_GITHUB_CLIENT_SECRET",
+      "authorize_url": "https://github.com/login/oauth/authorize",
+      "token_url": "https://github.com/login/oauth/access_token",
+      "options": {
+        "scope": "read:user"
+      },
+      "token_type": "account"
+    }
+  }
+}

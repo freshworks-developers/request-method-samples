@@ -4,49 +4,49 @@
     "common": {
       "location": {
         "full_page_app": {
-          "url": "index.html",
+          "url": "views/playground.html",
           "icon": "styles/images/icon.svg"
         }
       },
       "requests": {
-        "getContacts":{},
-        "replyTicket":{},
-        "dynamicHost":{},
-        "dynamicQueryParams":{},
-        "listAllTickets":{}
+        "dynamicHost": {},
+        "dynamicQueryParams": {},
+        "listAllTickets": {},
+        "getContacts": {},
+        "replyTicket": {},
+        "updateTicket": {},
+        "deleteResource": {},
+        "validateCredentials": {},
+        "cachedTicketList": {},
+        "retryableRequest": {},
+        "oauthGithubUser": {},
+        "swapiPlanets": {}
       },
       "functions": {
-        "usingDynamicHost": {
-          "timeout": 10
-        },
-        "usingQueryParams": {
-          "timeout": 10
-        }
+        "usingDynamicHost": { "timeout": 20 },
+        "usingQueryParams": { "timeout": 20 },
+        "getContactsSmi": { "timeout": 20 },
+        "postNoteSmi": { "timeout": 20 },
+        "putTicketSmi": { "timeout": 20 },
+        "deleteDemoSmi": { "timeout": 20 },
+        "cachedListSmi": { "timeout": 20 },
+        "retryDemoSmi": { "timeout": 20 },
+        "oauthDemoSmi": { "timeout": 20 },
+        "invokeSmiChain": { "timeout": 20 },
+        "invokeTemplateSmi": { "timeout": 20 }
       }
     },
     "support_ticket": {
       "location": {
         "ticket_sidebar": {
-          "url": "index.html",
-          "icon": "styles/images/icon.svg"
-        }
-      }
-    },
-    "deal": {
-      "location": {
-        "deal_entity_menu": {
-          "url": "index.html",
-          "icon": "styles/images/icon.svg"
-        },
-        "deal_quick_actions": {
-          "url": "index.html",
+          "url": "views/playground.html",
           "icon": "styles/images/icon.svg"
         }
       }
     }
   },
   "engines": {
-    "node": "18.13.0",
-    "fdk": "9.1.0"
+    "node": "24.11.0",
+    "fdk": "10.1.2"
   }
 }

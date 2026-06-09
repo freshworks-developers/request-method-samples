@@ -1,29 +1,81 @@
-## Request method sample app
+# Northwind Request Lab
 
-This sample app demonstrates [request method](https://developers-dev.freshworks.com/docs/app-sdk/v3.0/common/advanced-interfaces/request-method/) on Platform version 3.0 in different modules.
+Explore **request templates** on Freshdesk — `invokeTemplate`, `invoke`, OAuth, retry, cache, and HTTP verbs beyond GET. **Northwind Traders** uses this sample to teach every server-side and client-side request pattern in one tabbed playground.
 
-| Module | Works in Product |
-| ----- | ------- |
-| `common` | Common full page app |
-| `support_ticket` | Freshdesk |
-| `deal` | Freshworks CRM, Freshsales Suite |
+**Platform:** 3.0 · **FDK:** 10.1.2 · **Node:** 24.11.0 · **UI:** Crayons v4
 
-### Files and Folders
-    .
-    ├── README.md                 A file for your future self and developer friends to learn about app
-    ├── app                       A folder to place all assets required for frontend components
-    │   ├── index.html            A landing page for the user to use the app
-    │   ├── scripts               JavaScript to place files frontend components business logic
-    │   │   └── app.js
-    │   └── styles                A folder to place all the styles for app
-    │       ├── images
-    │       │   └── icon.svg
-    │       └── style.css
-    ├── config                    A folder to place all the configuration files
-    │   └── iparams.json
-    │   └── requests.json
-    ├── server                    A folder to place all the configuration files
-    │   └── server.js
-    └── manifest.json             A JSON file holding meta data for app to run on platform
+---
 
-Explore [more of app sample apps](https://community.developers.freshworks.com/t/freshworks-sample-apps/3604) on the Freshworks github respository.
+## Tabs
+
+| Tab | Demonstrates |
+|-----|--------------|
+| **Frontend requests** | `client.request.invokeTemplate` + `client.request.invoke` |
+| **Serverless SMI** | `$request.invokeTemplate`, `$request.invoke` chain, POST/PUT/DELETE |
+| **Request features** | `maxAttempts`/`retryDelay`, `cache`/`ttl`, `options.oauth` |
+
+---
+
+## Templates (`config/requests.json`)
+
+- **GET** — `listAllTickets`, `dynamicQueryParams`, `getContacts`, `swapiPlanets`
+- **POST/PUT/DELETE** — `replyTicket`, `updateTicket`, `deleteResource`
+- **Auth** — `encode(iparam.api_key)`; install validation via `validateCredentials`
+- **Retry** — `retryableRequest` (`maxAttempts: 3`, `retryDelay: 1000`)
+- **OAuth** — `oauthGithubUser` (`options.oauth: github`)
+
+Install page: `config/iparams.html` tests credentials with `invokeTemplate` before save.
+
+---
+
+## Setup
+
+```sh
+git clone https://github.com/freshworks-developers/request-method-samples.git
+cd request-method-samples
+fdk run
+```
+
+Append `?dev=true` to your Freshdesk URL. Connect GitHub OAuth in app settings for the OAuth demo. POST/PUT Freshdesk demos require a valid `ticket_id`.
+
+```sh
+fdk validate
+fdk pack
+```
+
+---
+
+## Project structure
+
+```
+.
+├── manifest.json
+├── config/
+│   ├── requests.json       # All template variants
+│   ├── oauth_config.json     # Demo GitHub OAuth
+│   ├── iparams.html          # Install-time credential validation
+│   └── assets/iparams.js
+├── server/server.js          # $request.invokeTemplate + $request.invoke
+├── app/
+│   ├── views/playground.html
+│   ├── scripts/playground.js
+│   └── styles/
+├── README.md
+└── USECASE.md
+```
+
+---
+
+## Tech stack
+
+- **Platform:** Freshworks Platform 3.0
+- **Runtime:** Node.js 24.11.0 · FDK 10.1.2
+- **UI:** Crayons v4
+
+---
+
+## Resources
+
+- [Request method](https://developers.freshworks.com/docs/app-sdk/v3.0/common/client/request-method/)
+- [Request templates](https://developers.freshworks.com/docs/app-sdk/v3.0/common/serverless-apps/request-templates/)
+- [USECASE.md](./USECASE.md)

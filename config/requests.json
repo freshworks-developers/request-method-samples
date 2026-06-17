@@ -1,25 +1,13 @@
 {
-  "dynamicHost": {
+  "publicGet": {
     "schema": {
       "protocol": "https",
       "method": "GET",
       "host": "<%= context.host %>",
-      "path": "/api/planets"
+      "path": "<%= context.path %>"
     }
   },
-  "dynamicQueryParams": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "<%= iparam.subdomain %>.freshdesk.com",
-      "path": "/api/v2/search/tickets",
-      "headers": {
-        "Authorization": "Basic <%= encode(iparam.api_key) %>",
-        "Content-Type": "application/json"
-      }
-    }
-  },
-  "listAllTickets": {
+  "iparamHostGet": {
     "schema": {
       "protocol": "https",
       "method": "GET",
@@ -30,9 +18,46 @@
         "Content-Type": "application/json"
       },
       "query": {
-        "order_type": "desc",
-        "order_by": "updated_at"
+        "per_page": "<%= context.per_page %>"
       }
+    }
+  },
+  "searchTickets": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/search/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "query": "<%= context.query %>"
+      }
+    }
+  },
+  "postWithBody": {
+    "schema": {
+      "protocol": "https",
+      "method": "POST",
+      "host": "httpbin.org",
+      "path": "/post",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "withRetryOptions": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= context.host %>",
+      "path": "<%= context.path %>"
+    },
+    "options": {
+      "maxAttempts": 3,
+      "retryDelay": 1000
     }
   }
 }

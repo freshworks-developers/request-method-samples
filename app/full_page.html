@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Connect Hub</title>
+  <script async type="module" src="https://cdn.jsdelivr.net/npm/@freshworks/crayons@v4/dist/crayons/crayons.esm.js"></script>
+  <script async nomodule src="https://cdn.jsdelivr.net/npm/@freshworks/crayons@v4/dist/crayons/crayons.js"></script>
+  <script src="{{{appclient}}}"></script>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="scripts/request-objects.js"></script>
+  <script src="scripts/request-kit.js"></script>
+  <script src="scripts/catalog-helpers.js"></script>
+  <script src="scripts/render-catalog.js"></script>
+  <script src="scripts/page-init.js"></script>
+  <script src="scripts/full_page.js"></script>
+</head>
+<body class="hub-frame">
+  <div class="hub-layout">
+    <header class="hub-hero">
+      <div class="hub-hero__brand">
+        <span class="hub-hero__eyebrow">Nexus API Labs</span>
+        <h1 class="hub-hero__title">Integration Ops Center</h1>
+        <p class="hub-hero__tagline">
+          Wire Freshdesk to partner CRMs, webhooks, and billing APIs — with live integration drills
+          powered by <code>requests.json</code> templates and server-side SMI invokes.
+        </p>
+      </div>
+      <a
+        class="hub-hero__link"
+        href="https://developers.freshworks.com/docs/app-sdk/v3.0/support_ticket/advanced-interfaces/request-method/"
+        target="_blank"
+        rel="noopener"
+      >Request method reference →</a>
+    </header>
+    <main id="catalog" class="hub-main">
+      <fw-spinner size="medium"></fw-spinner>
+      <p class="hint">Loading integration drills…</p>
+    </main>
+  </div>
+</body>
+</html>

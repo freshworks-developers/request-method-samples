@@ -1,33 +1,31 @@
-exports = {
-  usingDynamicHost: async function () {
-    //Request method invocation with $request.invokeTemplate that allows host substitution from context only in Serverless functions
-    let result
-    try {
-      result = await $request.invokeTemplate("dynamicHost", {
-        context: {
-          host: "swapi.dev"
-        }
-      })
-      console.log("Dynamic Host :", result)
-    } catch (error) {
-      console.error(error)
-    }
-    renderData(null, result)
-  },
-  usingQueryParams: async function (options) {
-    //Request method invocation with $request.invokeTemplate that allows dynamic query parameters
-    let result
-    try {
-      result = await $request.invokeTemplate("dynamicQueryParams", {
-        context: {},
-        query: {
-          query: options.queryString
-        }
-      })
-      console.log("Dynamic Query Params :", result)
-    } catch (error) {
-      console.error(error)
-    }
-    renderData(null, result)
+function buildInvokePayload(args) {
+  const payload = { context: (args && args.context) || {} };
+  if (args && args.body !== undefined) {
+    payload.body = args.body;
   }
+  if (args && args.query !== undefined) {
+    payload.query = args.query;
+  }
+  return payload;
 }
+
+exports = {
+  invokeRequestTemplate: async function (args) {
+    const templateName = args && args.templateName;
+    if (!templateName) {
+      renderData({ message: 'templateName is required' });
+      return;
+    }
+
+    try {
+      const result = await $request.invokeTemplate(
+        templateName,
+        buildInvokePayload(args)
+      );
+      renderData(null, result);
+    } catch (error) {
+      console.error('invokeRequestTemplate failed', error);
+      renderData(error);
+    }
+  }
+};

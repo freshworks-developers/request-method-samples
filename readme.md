@@ -498,10 +498,11 @@ fdk run
 1. **Bodies at invoke time** — HTTP request bodies are not part of the template schema; pass `body` when calling `invokeTemplate`.
 2. **Secure iparam encoding** — use `encode(iparam.api_key)` in Authorization headers; never embed raw secure values in front-end code.
 3. **Global app requests** — declare templates under `modules.common.requests` and enable `global_apps.enabled`.
-4. **SMI for live demos** — route catalog invokes through serverless so API keys and production patterns stay consistent.
-5. **Front-end invoke is teaching-only** — direct `client.request.invokeTemplate` is shown for caching; production integrations should use SMI.
-6. **Host substitution rules** — `host` must be FQDN only; use `<%= context.host %>` or `<%= iparam.subdomain %>.freshdesk.com`, not full URLs.
-7. **Reference vs live** — multipart, OAuth, and TLS panels document JSON patterns not runnable in Freshdesk without object store or OAuth config.
+4. **Scenario-first teaching** — cards explain client workflows; the playbook holds raw schema reference (like Agent Huddle's sample notes vs saved notes).
+5. **SMI for live drills** — scenario cards and Quick Connect route through serverless so API keys stay server-side.
+6. **Ticket context in sidebar** — webhook and search payloads derive from `client.data.get('ticket')`, not hard-coded demo values.
+7. **Front-end invoke is teaching-only** — cached lookup demo lives in the playbook; production integrations should use SMI.
+8. **Reference vs live** — future-pattern cards document upload/OAuth/TLS JSON not runnable in Freshdesk without object store or OAuth config.
 
 ## Resources
 

@@ -33,13 +33,13 @@
     const accent = templateDef.accent || 'blue';
     const invokeHandler = opts.invokeHandler || "CatalogUI.invokeSmi('" + safeKey + "')";
 
-    let actions =
+    const actions =
       '<div class="object-actions">' +
       btn('Run integration', invokeHandler, 'primary') +
       btn('Copy server code', "CatalogUI.copySample('" + safeKey + "')") +
       '</div>';
 
-    let techBlock =
+    const techBlock =
       '<pre class="sample-code" id="sample-' + templateDef.key + '">' +
       (typeof RequestKit !== 'undefined' ? RequestKit.escapeHtml(templateDef.sampleCode) : templateDef.sampleCode) +
       '</pre>' +

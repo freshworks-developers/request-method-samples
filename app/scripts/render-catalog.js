@@ -135,7 +135,7 @@
 
   function buildSidebarCatalog(ticket) {
     const t = ticket || {};
-    const ticketId = t.id != null ? t.id : '—';
+    const ticketId = t.id !== null && t.id !== undefined ? t.id : '—';
     const subject = t.subject ? RequestKit.escapeHtml(t.subject) : 'Open a ticket to load context';
 
     let html = '';

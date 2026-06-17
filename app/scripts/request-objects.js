@@ -218,8 +218,8 @@
 
   function buildSidebarInvokeArgs(templateKey, ticket) {
     const t = ticket || {};
-    const priority = t.priority != null ? t.priority : 3;
-    const ticketId = t.id != null ? t.id : 'sample';
+    const priority = t.priority !== null && t.priority !== undefined ? t.priority : 3;
+    const ticketId = t.id !== null && t.id !== undefined ? t.id : 'sample';
 
     switch (templateKey) {
       case 'postWithBody':
@@ -230,7 +230,7 @@
             ticket_id: ticketId,
             subject: t.subject || 'Sample ticket subject',
             priority: priority,
-            status: t.status != null ? t.status : null
+            status: t.status !== null && t.status !== undefined ? t.status : null
           })
         };
       case 'searchTickets':

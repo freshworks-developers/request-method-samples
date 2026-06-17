@@ -1,13 +1,28 @@
 {
-  "dynamicHost": {
+  "publicGet": {
     "schema": {
       "protocol": "https",
       "method": "GET",
       "host": "<%= context.host %>",
-      "path": "/api/planets"
+      "path": "<%= context.path %>"
     }
   },
-  "dynamicQueryParams": {
+  "iparamHostGet": {
+    "schema": {
+      "protocol": "https",
+      "method": "GET",
+      "host": "<%= iparam.subdomain %>.freshdesk.com",
+      "path": "/api/v2/tickets",
+      "headers": {
+        "Authorization": "Basic <%= encode(iparam.api_key) %>",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "per_page": "<%= context.per_page %>"
+      }
+    }
+  },
+  "searchTickets": {
     "schema": {
       "protocol": "https",
       "method": "GET",
@@ -16,139 +31,33 @@
       "headers": {
         "Authorization": "Basic <%= encode(iparam.api_key) %>",
         "Content-Type": "application/json"
-      }
-    }
-  },
-  "listAllTickets": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "<%= iparam.subdomain %>.freshdesk.com",
-      "path": "/api/v2/tickets",
-      "headers": {
-        "Authorization": "Basic <%= encode(iparam.api_key) %>",
-        "Content-Type": "application/json"
       },
       "query": {
-        "order_type": "desc",
-        "order_by": "updated_at"
+        "query": "<%= context.query %>"
       }
     }
   },
-  "getContacts": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "<%= iparam.subdomain %>.freshdesk.com",
-      "path": "/api/v2/contacts",
-      "headers": {
-        "Authorization": "Basic <%= encode(iparam.api_key) %>",
-        "Content-Type": "application/json"
-      },
-      "query": {
-        "per_page": "5"
-      }
-    }
-  },
-  "replyTicket": {
+  "postWithBody": {
     "schema": {
       "protocol": "https",
       "method": "POST",
-      "host": "<%= iparam.subdomain %>.freshdesk.com",
-      "path": "/api/v2/tickets/<%= context.ticket_id %>/notes",
-      "headers": {
-        "Authorization": "Basic <%= encode(iparam.api_key) %>",
-        "Content-Type": "application/json"
-      }
-    }
-  },
-  "updateTicket": {
-    "schema": {
-      "protocol": "https",
-      "method": "PUT",
-      "host": "<%= iparam.subdomain %>.freshdesk.com",
-      "path": "/api/v2/tickets/<%= context.ticket_id %>",
-      "headers": {
-        "Authorization": "Basic <%= encode(iparam.api_key) %>",
-        "Content-Type": "application/json"
-      }
-    }
-  },
-  "deleteResource": {
-    "schema": {
-      "protocol": "https",
-      "method": "DELETE",
       "host": "httpbin.org",
-      "path": "/delete",
+      "path": "/post",
       "headers": {
         "Content-Type": "application/json"
       }
     }
   },
-  "validateCredentials": {
+  "withRetryOptions": {
     "schema": {
       "protocol": "https",
       "method": "GET",
-      "host": "<%= context.subdomain %>.freshdesk.com",
-      "path": "/api/v2/tickets",
-      "headers": {
-        "Authorization": "Basic <%= encode(context.api_key) %>",
-        "Content-Type": "application/json"
-      },
-      "query": {
-        "per_page": "1"
-      }
-    }
-  },
-  "cachedTicketList": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "<%= iparam.subdomain %>.freshdesk.com",
-      "path": "/api/v2/tickets",
-      "headers": {
-        "Authorization": "Basic <%= encode(iparam.api_key) %>",
-        "Content-Type": "application/json"
-      },
-      "query": {
-        "per_page": "5"
-      }
-    }
-  },
-  "retryableRequest": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "httpbin.org",
-      "path": "/status/200"
+      "host": "<%= context.host %>",
+      "path": "<%= context.path %>"
     },
     "options": {
       "maxAttempts": 3,
       "retryDelay": 1000
-    }
-  },
-  "oauthGithubUser": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "api.github.com",
-      "path": "/user",
-      "headers": {
-        "Authorization": "Bearer <%= access_token %>",
-        "Accept": "application/vnd.github+json",
-        "User-Agent": "Nexus-Request-Sample"
-      }
-    },
-    "options": {
-      "oauth": "github"
-    }
-  },
-  "swapiPlanets": {
-    "schema": {
-      "protocol": "https",
-      "method": "GET",
-      "host": "swapi.dev",
-      "path": "/api/planets"
     }
   }
 }

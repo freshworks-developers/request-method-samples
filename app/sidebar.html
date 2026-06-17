@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Connect — Quick Connect</title>
+  <script async type="module" src="https://cdn.jsdelivr.net/npm/@freshworks/crayons@v4/dist/crayons/crayons.esm.js"></script>
+  <script async nomodule src="https://cdn.jsdelivr.net/npm/@freshworks/crayons@v4/dist/crayons/crayons.js"></script>
+  <script src="{{{appclient}}}"></script>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="scripts/request-objects.js"></script>
+  <script src="scripts/request-kit.js"></script>
+  <script src="scripts/catalog-helpers.js"></script>
+  <script src="scripts/render-catalog.js"></script>
+  <script src="scripts/page-init.js"></script>
+  <script src="scripts/sidebar.js"></script>
+</head>
+<body class="sidebar-frame">
+  <div class="sidebar-shell">
+    <header class="sidebar-header">
+      <span class="sidebar-header__eyebrow">Nexus Connect Hub</span>
+      <h2 class="sidebar-header__title">Quick Connect</h2>
+      <p class="sidebar-header__desc">
+        Run partner integrations for the ticket you have open. Payloads are built from
+        <code>client.data.get('ticket')</code> and sent through serverless SMI.
+      </p>
+    </header>
+    <div id="catalog">
+      <fw-spinner size="small"></fw-spinner>
+      <p class="hint">Loading…</p>
+    </div>
+  </div>
+</body>
+</html>

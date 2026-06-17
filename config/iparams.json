@@ -1,0 +1,21 @@
+{
+  "api_key": {
+    "display_name": "Freshdesk API key",
+    "description": "Used in Authorization header via encode(iparam.api_key) in request templates.",
+    "secure": true,
+    "type": "text",
+    "required": true
+  },
+  "subdomain": {
+    "display_name": "Freshdesk subdomain",
+    "type": "text",
+    "description": "Account subdomain for host substitution (e.g. acme for acme.freshdesk.com).",
+    "required": true
+  },
+  "tls_ca": {
+    "display_name": "TLS CA certificate (optional)",
+    "description": "Single-line PEM for options.security.ca when troubleshooting TLS errors.",
+    "type": "paragraph",
+    "required": false
+  }
+}
